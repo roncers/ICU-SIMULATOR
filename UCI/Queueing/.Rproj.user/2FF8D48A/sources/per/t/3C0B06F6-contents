@@ -1,0 +1,184 @@
+
+#QUEUE STRUCTURE
+#
+#
+
+# Function to enqueue an element into the queue
+enqueue <- function(queue, element) {
+  return(append(queue,element))
+}
+
+# Function to dequeue an element from the queue
+dequeue <- function(queue) {
+  if (length(queue) == 0) {
+    cat("Queue is empty. Nothing to dequeue.\n")
+    return(queue)
+  }
+  return(queue[-1])
+}
+
+is_empty <- function(queue) {
+  if (length(queue) == 0) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}
+
+delete <- function(array, id){
+  del <- 0
+  for(i in 1:length(array)){
+    if(array[i] == id){
+      del <- i
+    }
+  }
+  if(i > 0 && length(array) > 1){
+    return(array[-del])
+  }
+  return(c())
+}
+#
+#
+#END QUEUE STRUCTURE
+
+#Displayed data
+colLength <- 8
+
+#Unit of time
+timeUnit <- 5
+
+IndexNum <- function(n){
+  return((n-1)*colLength)
+}
+
+#t <- list[i]*5
+#h <- t%/%60
+#t <- t - h*60
+#h <- paste0(h,":")
+#list[i] <- paste0(h,t)
+
+timeConverser <- function(list){
+  for(i in 1:length(list)){
+    if(i%%colLength != 1) {
+      list[i] <- list[i]*timeUnit
+    }
+  }
+  return(list)
+}
+
+#setting the random seed
+set.seed(0123)
+
+
+
+#The function that determines if the patients come
+PatientsFunction <- function() rpois(1,1/15)
+PatientsHealing <- function() rnorm(1,3)
+HealingTolerance <- 0.5
+PatientsDying <- function() rpois(1,1/100)
+maxBeds <- 5
+
+
+#The function that determines if the doctors attend and sit the patient on a UCI bed
+DoctorsAttend <- function() rnorm(1,1)
+#The tolerance is when the doctor is attending
+DoctorsTolerance <- 0.4
+#Determines the number of doctors
+#doctors <- 5
+
+maxTime <- 1500
+t <- 0
+
+evaluateTolerance <- function(n,t) {
+  if(n>t && n<2 - t)
+    return(TRUE)
+  else
+    return(FALSE)
+}
+
+waitToEnter <- c()
+waitToExit <- c()
+removeCorpse <- c()
+beds <- c()
+
+log <- c()
+
+simulate <- function() {
+  id <- 1
+  lastT <- 0
+  while (t<maxTime) {
+    if(PatientsFunction()){   #if a patient arrives
+      #adds the patient to a queue where he waits to be attended
+      #the id will be the column which represents in the log
+      patientData <- c(id, t - lastT, t, 0, 0, 0, 0, 0)
+      lastT <- t
+      log <- enqueue(log,patientData)
+      waitToEnter <- enqueue(waitToEnter,id)
+      print(id)
+      print("paciente empieza a esperar")
+      id <- id + 1
+    }
+    
+    #checks if the queue is empty and if not it check if there are doctors avaiable that can attend the patient waiting and they can last some time
+    if(!is_empty(waitToEnter) && maxBeds > length(beds) && evaluateTolerance(DoctorsAttend(),DoctorsTolerance)){
+      patientID <- waitToEnter[1]
+      waitToEnter <- dequeue(waitToEnter)
+      beds <- enqueue(beds,patientID)
+      log[IndexNum(patientID)+4] <- t
+      print(patientID)
+      print("paciente llevado a cama")
+    }
+    
+    #if there are patinents in beds they check if they are healed or if they die
+    if(!is_empty(beds)){
+      for(patientID in beds) {
+        if(!patientID %in% waitToExit && !patientID %in% removeCorpse && evaluateTolerance(PatientsHealing(),HealingTolerance)){
+          waitToExit <- enqueue(waitToExit,patientID)
+          log[IndexNum(patientID)+5] <- t
+          print(patientID)
+          print("paciente curado, esperando a salir")
+        } else if(!patientID %in% waitToExit && !patientID %in% removeCorpse && PatientsDying()){
+          removeCorpse <- enqueue(removeCorpse,patientID)
+          log[IndexNum(patientID)+7] <- t
+          print(patientID)
+          print("paciente fallecido")
+        }
+      }
+    }
+    
+    #if a patient is helaed a doctor attends it to leave the ICU
+    if(!is_empty(beds) && !is_empty(waitToExit) && evaluateTolerance(DoctorsAttend(),DoctorsTolerance)){
+      patientID <- waitToExit[1]
+      waitToExit <- dequeue(waitToExit)
+      beds <- delete(beds,patientID)
+      log[IndexNum(patientID)+6] <- t
+      print(patientID)
+      print("paciente sale de la UCI")
+    }
+    
+    #if a patient has died and need to be removed from the bed
+    if(!is_empty(beds) && !is_empty(removeCorpse) && evaluateTolerance(DoctorsAttend(),DoctorsTolerance)){
+      patientID <- removeCorpse[1]
+      removeCorpse <- dequeue(removeCorpse)
+      beds <- delete(beds,patientID)
+      log[IndexNum(patientID)+8] <- t
+      print(patientID)
+      print("cadaver removido de la UCI")
+    }
+    
+    t <- t + 1
+  }
+  
+  print(length(log)/colLength)
+  log <- timeConverser(log)
+  LOG <- matrix(log, nrow = colLength)
+  LOG <- t(LOG)
+  colnames(LOG) <- c("ID paciente","Tiempo entre llegadas", "Hora llegada", "Hora Atencion", "Hora curacion", "Hora alta","Hora muerte","Hora salida cadaver")
+  write.csv2(LOG, "data.csv", row.names = FALSE)
+  
+}
+
+simulate()
+
+
+

@@ -1,0 +1,28 @@
+{
+    "id": "DBF8FBAC",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1709818399078.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "id": "6f9108f90d4b4c07960a3c3838c749fa",
+        "name": "patient",
+        "title": "patient",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 4478020765779766306,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1709818399078,
+    "read_only": false,
+    "read_only_alternatives": []
+}

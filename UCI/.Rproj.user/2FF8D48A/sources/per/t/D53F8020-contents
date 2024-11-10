@@ -1,0 +1,36 @@
+
+
+#The function that determines if the patients come
+PatientsFunction <- function() rpois(1,1/15)
+PatientsHealing <- function() rnorm(1,20)
+HealingTolerance <- 0.5
+beds <- 5
+
+#The function that determines if the doctors attend and sit the patient on a UCI bed
+DoctorsAttend <- function() rnorm(1,1)
+#The tolerance is when the doctor is attending
+DoctorsTolerance <- 0.8
+#Determines the number of doctors
+doctors <- 5
+
+maxTime <- 100
+t <- 0
+
+evaluateTolerance <- function(n,t) {
+  if(n>-t && n<t)
+    return(TRUE)
+  else
+    return(FALSE)
+}
+
+while (t<maxTime) {
+  if(PatientsFunction()){
+    #adds the patient to a queue where he waits to be attended
+  }
+  #checks if the queue is empty and if not it check if there are doctors aviable that can attend the patient waiting and they can last some time
+  
+  #if there are patinents in beds they check if they are heled
+  
+  #if a patient is helaed a doctor attends it to leave the ICU
+  t <- t + 1
+}

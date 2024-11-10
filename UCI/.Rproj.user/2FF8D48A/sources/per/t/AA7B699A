@@ -1,0 +1,28 @@
+{
+    "id": "AA7B699A",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1709818401951.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "id": "642458cb0c8b4c58b13e94e19b89ef5c",
+        "name": "env",
+        "title": "env",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2339342615968,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1709818401951,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,126 @@
+# Install and load the DES library
+install.packages("simmer")
+install.packages("Rcpp")
+library("simmer")
+set.seed(2024)
+env <- simmer()
+arrival_process <- trajectory() %>%
+timeout(function() rnorm(1, 1)) %>%
+set_attribute("type", "arrival")  # Set an attribute to distinguish arrival events
+updateR()
+install.packages("installr")
+library(installr)
+updateR()
+View(env)
+updateR()
+# Install and load the DES library
+install.packages("simmer")
+install.packages("simmer")
+install.packages("simmer")
+install.packages("simmer")
+install.packages("simmer")
+install.packages("simmer")
+install.packages("simmer")
+install.packages("simmer")
+install.packages("simmer")
+# Install and load the DES library
+install.packages("simmer")
+install.packages("Rcpp")
+library("simmer")
+set.seed(2024)
+env <- simmer()
+arrival_process <- trajectory() %>%
+timeout(function() rnorm(1, 1)) %>%
+set_attribute("type", "arrival")  # Set an attribute to distinguish arrival events
+arrival_process <- trajectory() %>%
+timeout(function() rnorm(1, 1)) %>%
+set_attribute("type", timeout(function() rnorm(1, 1)))  # Set an attribute to distinguish arrival events
+arrival_process <- trajectory() %>%
+timeout(function() rnorm(1, 1)) %>%
+set_attribute("type", function() rnorm(1, 1))  # Set an attribute to distinguish arrival events
+# Add the arrival process to the environment
+env <- add_generator(env, "arrival", arrival_process, at(0))
+# Run the simulation for a certain amount of time
+sim_out <- simmer(env) %>%
+run(until = 100)  # Run the simulation for 10 units of time
+# Run the simulation for a certain amount of time
+sim_out <- simmer(100) %>%
+run(until = 100)  # Run the simulation for 10 units of time
+# Run the simulation for a certain amount of time
+sim_out <- simmer(env) %>%
+run(until = 100)  # Run the simulation for 10 units of time
+# Create a simulation environment
+env <- simmer()
+# Define the simulation process, e.g., arrival of customers
+arrival <- trajectory() %>%
+seize("server") %>%
+timeout(function() rnorm(1, mean = 5)) %>%
+release("server")
+# Add the defined process to the environment
+env %>%
+add_resource("server", 1) %>%
+add_generator("customer", arrival, function() rnorm(1, mean = 10))
+# Run the simulation
+sim_out <- env %>%
+run(until = 100)  # Run the simulation for 100 units of time
+View(arrival)
+View(arrival_process)
+View(env)
+View(sim_out)
+library("simmer")
+# Install and load the DES library
+install.packages("simmer")
+install.packages("simmer")
+# Install and load the DES library
+install.packages("simmer")
+install.packages("simmer")
+library(simmer)
+# Create a simulation environment
+env <- simmer()
+# Define the simulation process, e.g., arrival of customers
+arrival <- trajectory() %>%
+seize("server") %>%
+timeout(function() rnorm(1, mean = 5)) %>%
+release("server")
+# Add the defined process to the environment
+env %>%
+add_resource("server", 1) %>%
+add_generator("customer", arrival, function() rnorm(1, mean = 10))
+# Run the simulation
+sim_out <- env %>%
+run(until = 100)  # Run the simulation for 100 units of time
+View(arrival)
+View(env)
+View(env)
+View(sim_out)
+# Create a simulation environment
+env <- simmer()
+install.packages("installr")
+library(installr)
+updateR()
+updateR()
+# Install and load the DES library
+install.packages("simmer")
+install.packages("Rcpp")
+library("simmer")
+set.seed(2024)
+# Create a simulation environment
+env <- simmer()
+# Define the simulation process, e.g., arrival of customers
+arrival <- trajectory() %>%
+seize("server") %>%
+timeout(function() rnorm(1, mean = 5)) %>%
+release("server")
+# Add the defined process to the environment
+env %>%
+add_resource("server", 1) %>%
+add_generator("customer", arrival, function() rnorm(1, mean = 10))
+# Run the simulation
+sim_out <- env %>%
+run(until = 100)  # Run the simulation for 100 units of time
+View(sim_out)
+View(env)
+View(arrival)
+View(env)
+# Install and load the DES library
+install.packages("simmer", dependencies = T)

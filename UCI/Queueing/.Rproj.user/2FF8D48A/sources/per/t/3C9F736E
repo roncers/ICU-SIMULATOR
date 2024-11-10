@@ -1,0 +1,28 @@
+{
+    "id": "3C9F736E",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1709907887295.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "id": "dc81cee3dbeb4e8aa215286e67e8dbef",
+        "name": "waitToEnter",
+        "title": "waitToEnter",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 3180232325781529132,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1709907887295,
+    "read_only": false,
+    "read_only_alternatives": []
+}
