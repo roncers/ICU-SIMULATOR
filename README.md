@@ -1,4 +1,4 @@
 # TFG
-This repo contains some of the investigation & programming I have done for my Bachelor's Thesis
-It's a simulation model of an ICU made in R, I really loved investigating about it and coding it.
-Also I did it with LaTeX so I learned 1 new programming language (R) and 1 new markup language based on TeX.
+This repository contains part of the research and programming work I carried out for my Bachelor’s thesis.
+It is a simulation model of an ICU developed in R, and I truly enjoyed both the investigation and the coding process.
+Through this project, I learned a new programming language (R) as well as a TeX-based markup language (LaTeX), since the thesis itself was written in LaTeX.
